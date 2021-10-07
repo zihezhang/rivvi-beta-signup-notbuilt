@@ -10,6 +10,11 @@ Runs the app in the development mode on [http://localhost:3000](http://localhost
 npm start
 ```
 
+To get ready to deploy
+```sh
+npm run build
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
