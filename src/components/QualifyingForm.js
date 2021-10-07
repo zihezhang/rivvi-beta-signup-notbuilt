@@ -6,7 +6,7 @@ export class QualifyingForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentStep: 1,
+            currentStep: 1, // keeps track of position in qualifying form
         }
     }
     //method for 'Next' button
@@ -21,6 +21,8 @@ export class QualifyingForm extends Component {
         e.preventDefault();
         this.props.prevStep();
     }
+
+    // click event for yes and no button
     _yes = () => {
         let currentStep = this.state.currentStep
         currentStep = currentStep >= 5 ? 6 : currentStep + 1
@@ -28,7 +30,6 @@ export class QualifyingForm extends Component {
             currentStep: currentStep
         })
     }
-
     _no = () => {
         let currentStep = this.state.currentStep
         currentStep = (currentStep <= 1) ? 1 : (currentStep = 7)
@@ -36,8 +37,9 @@ export class QualifyingForm extends Component {
             currentStep: currentStep
         })
     }
+
     /*
-    * the functions for our button
+    * FUNCTION FOR BUTTONS
     */
     noButton() {
         let currentStep = this.state.currentStep;
@@ -46,13 +48,13 @@ export class QualifyingForm extends Component {
                 <button
                     style={{ float: "left", backgroundColor: "#e45115", border: "3px solid #e45115" }}
                     type="button" onClick={this._no}>
+                    {/* Editable no button */}
                     No
                 </button>
             )
         }
         return null;
     }
-
     yesButton() {
         let currentStep = this.state.currentStep;
         if (currentStep < 6) {
@@ -60,7 +62,8 @@ export class QualifyingForm extends Component {
                 <button
                     style={{ float: "right", backgroundColor: "#709500", border: "3px solid #709500" }}
                     type="button" onClick={this._yes}>
-                    Yes
+                    {/* Editable yes button */}
+                    Yes 
                 </button>
             )
         }
@@ -77,28 +80,31 @@ export class QualifyingForm extends Component {
             }}>
                 <div id="header"> <img src="./images/rivvi-logo.png" width="100" alt="logo" /> </div>
                 <form id="qualify" onSubmit={this.handleSubmit}>
-                    {/* render the form steps and pass required props in*/}
-                    <Step1
+                    {/* 
+                        Renders the form steps and passes in required props to control the flow of the form. 
+                        Text for each step of the form can be edited in the functions down below.
+                    */}
+                    <Step1 // introduction
                         currentStep={this.state.currentStep}
                         back={this.back}
                     />
-                    <Step2
+                    <Step2 // question 1
                         currentStep={this.state.currentStep}
                     />
-                    <Step3
+                    <Step3 // question 2
                         currentStep={this.state.currentStep}
                     />
-                    <Step4
+                    <Step4 // question 3
                         currentStep={this.state.currentStep}
                     />
-                    <Step5
+                    <Step5 // question 4
                         currentStep={this.state.currentStep}
                     />
-                    <Step6
+                    <Step6 // qualified
                         currentStep={this.state.currentStep}
                         back={this.back}
                     />
-                    <Step7
+                    <Step7 // qualification rejection
                         currentStep={this.state.currentStep}
                         back={this.back}
                     />
@@ -110,6 +116,7 @@ export class QualifyingForm extends Component {
                     {this.noButton()}
                     {this.yesButton()}
                 </form>
+                {/* Editable footer text */}
                 <div id="footer">Copyright © 2020 Rivvi. All rights reserved.</div>
             </div>
 
@@ -118,66 +125,65 @@ export class QualifyingForm extends Component {
     }
 }
 
+/*
+* The following functions are the steps/questions of the qualifying form. 
+* The text within the html tags can be edited to display different text.
+* Generally, questions are in the <h3> tags and descriptions are in <p> tags, both of which are editable.
+*/
 function Step1(props) {
-    if (props.currentStep !== 1) {
-        return null
-    }
+    if (props.currentStep !== 1) { return null }
     return (
         <div className="form-group">
+            {/* editable question */}
             <h4>We’re currently recruiting <br />private beta test customers.</h4>
-
             <p id="intro-blurb">
                 If you’re interested in reducing your operating costs, we would like to offer you free payroll processing for your business… interested?  Keep reading.
                 <br /><br />The software works and we’ve thoroughly tested it, it’s just not final and we haven’t made it look too pretty yet (we’re working on that).
                 <br /><br />Our goal right now is to ensure the functionality works for as many different businesses as possible and to get your honest and critical feedback so we can incorporate before we make it publicly available.
-
             </p>
+            {/* Back button to go to landing page */}
             <button style={{ float: "left", backgroundColor: "#e45115", border: "3px solid #e45115" }} onClick={props.back}>
                 Back
-                </button>
+            </button>
         </div>
     );
 }
 
 function Step2(props) {
-    if (props.currentStep !== 2) {
-        return null
-    }
+    if (props.currentStep !== 2) { return null }
     return (
         <div className="form-group">
+            {/* editable question */}
             <h3>Is your business based in Canada?</h3>
         </div>
     );
 }
 
 function Step3(props) {
-    if (props.currentStep !== 3) {
-        return null
-    }
+    if (props.currentStep !== 3) { return null }
     return (
         <div className="form-group">
+            {/* editable question */}
             <h3>Are you Incorporated in Ontario?</h3>
         </div>
     );
 }
 
 function Step4(props) {
-    if (props.currentStep !== 4) {
-        return null
-    }
+    if (props.currentStep !== 4) { return null }
     return (
         <div className="form-group">
+            {/* editable question */}
             <h3>Do you have less than 20 employees?</h3>
         </div>
     );
 }
 
 function Step5(props) {
-    if (props.currentStep !== 5) {
-        return null
-    }
+    if (props.currentStep !== 5) { return null }
     return (
         <div className="form-group">
+            {/* editable question */}
             <h3>Do you bank with one of the big 5 banks?</h3>
             <p id="example" ><span>Either: Canadian Imperial Bank of Commerce (CIBC),
             Bank of Montreal (BMO),
@@ -190,28 +196,29 @@ function Step5(props) {
 }
 
 function Step6(props) {
-    if (props.currentStep !== 6) {
-        return null
-    }
+    if (props.currentStep !== 6) { return null }
     return (
         <div className="form-group">
+            {/* editable congrats */}
             <h2>Congrats! You qualify to be a <br /> Rivvi Beta Customer</h2>
+            {/* Back button to go to landing page */}
             <button style={{ float: "left", backgroundColor: "#e45115", border: "3px solid #e45115" }} onClick={props.back}>
                 No thanks
             </button>
+            {/* Button to move onto application form */}
             <button style={{ float: "right", backgroundColor: "#709500", border: "3px solid #709500" }}>Let's do it</button>
         </div>
     );
 }
 
 function Step7(props) {
-    if (props.currentStep !== 7) {
-        return null
-    }
+    if (props.currentStep !== 7) { return null }
     return (
         <div className="form-group">
+            {/* editable sorry */}
             <h2>Sorry... you do not qualify</h2>
             <p>But we'd love to stay connected and reach out to you once we can get you on our platform. Please give us your email address and we'll keep in touch.</p>
+            {/* email input field; email will be passed to mailchimp email subscription */}
             <Mailchimp
                 action='https://rivvi.us5.list-manage.com/subscribe/post?u=0efb13dcc7eb6c01e34fe1cf6&amp;id=7153349ce3'
                 fields={[
@@ -233,13 +240,6 @@ function Step7(props) {
                     }
                 }
             />
-
-            {/* <div className="center">
-                <button style={{ backgroundColor: "#e45115", border: "3px solid #e45115" }} onClick={props.back}>
-                    Back
-                </button>
-            </div> */}
-
         </div>
     );
 }

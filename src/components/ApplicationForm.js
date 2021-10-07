@@ -88,7 +88,7 @@ export class ApplicationForm extends Component {
     }
 
     /*
-    * the functions for our button
+    * functions for buttons
     */
     previousButton() {
         let currentStep = this.state.currentStep;
@@ -135,15 +135,7 @@ export class ApplicationForm extends Component {
         return null;
     }
 
-    // valid = () => {
-    //     // let input = this.state.companyName;
-    //     if(!(this.state.companyName=='')){
-    //         return (this._next());
-    //     }
-    //     return console.log("lmfao");
-    // }
-
-    //goes to next question when you press enter
+    //goes to next question when enter is pressed
     handleEnter = e => {
         if (e.keyCode === 13) {
             e.preventDefault();
@@ -151,7 +143,7 @@ export class ApplicationForm extends Component {
         }
     }
 
-    //funtion that check if you've scrolled to the bottom
+    //funtion that check if applicant scrolled to the bottom
     handleScroll = (e) => {
         const bottom = ((e.target.scrollHeight - e.target.scrollTop-50) <= e.target.clientHeight);
         if (bottom) {
@@ -252,6 +244,7 @@ export class ApplicationForm extends Component {
 
                 </form>
                 {/* <p id="footer">Step {this.state.currentStep} out of 9 </p> */}
+                {/* Editable footer text */}
                 <div id="footer">Copyright © 2020 Rivvi. All rights reserved.</div>
 
             </div>
@@ -259,10 +252,16 @@ export class ApplicationForm extends Component {
     }
 }
 
+/*
+* The following functions are the steps/questions of the application form. 
+* The text within the html tags can be edited to display different text.
+* Everything in <label> tags are questions, which are all editable.
+*/
 function Step1(props) {
     if (props.currentStep !== 1) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your company name?</label>
             <input
                 className="form-control"
@@ -277,10 +276,11 @@ function Step1(props) {
               required 
             />
             <div className="inputProgress" style={{ width: "100%" }}></div>
-                
+            {/* Back button to go to qualifying form */}
             <button id="back-button" onClick={props.back}>
+                {/* editable button text */}
                 Back
-                </button>
+            </button>
         </div>
     );
 }
@@ -289,6 +289,7 @@ function Step2(props) {
     if (props.currentStep !== 2) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your first name?</label>
             <input
                 className="form-control"
@@ -311,6 +312,7 @@ function Step3(props) {
     if (props.currentStep !== 3) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your last name?</label>
             <input
                 className="form-control"
@@ -333,6 +335,7 @@ function Step4(props) {
     if (props.currentStep !== 4) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your email?</label>
             <input
                 className="form-control"
@@ -355,6 +358,7 @@ function Step5(props) {
     if (props.currentStep !== 5) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your phone number?</label>
             <input
                 className="form-control"
@@ -377,6 +381,7 @@ function Step6(props) {
     if (props.currentStep !== 6) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>How often do you pay your employees?</label>
             <select 
             className="form-control" 
@@ -386,6 +391,7 @@ function Step6(props) {
             onChange={props.handleChange} 
             autoFocus 
             required>
+                {/* editable options */}
                 <option id="placholder" value="" hidden>Frequency</option>
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>
@@ -402,6 +408,7 @@ function Step7(props) {
     if (props.currentStep !== 7) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>How many employees are paid hourly?</label>
             <input
                 className="form-control"
@@ -425,6 +432,7 @@ function Step8(props) {
     if (props.currentStep !== 8) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>How many employees are salaried?</label>
             <input
                 className="form-control"
@@ -449,6 +457,7 @@ function Step9(props) {
     if (props.currentStep !== 9) {return null}
     return (
         <div id="input-container">
+            {/* editable question */}
             <label>What is your total annual payroll?</label>
             <input
                 className="form-control"
@@ -469,10 +478,9 @@ function Step9(props) {
 }
 function Step10(props) {
     if (props.currentStep !== 10) {return null}
-    // document.getElementById("register").style.height = "250px";
-
     return (
         <div className="row" id="confirm-container">
+            {/* editable, summary of provided information */}
             <label className="center">Here is your information</label>
             <div className="column">
                 <p id="confirm-text-left">
@@ -508,6 +516,7 @@ function Step11(props) {
     if (props.currentStep !== 11) {return null}
     return (
         <div id="confirm-container">
+        {/* editable, terms of service */}
             <label className="center" style={{textAlign:"center"}}>RIVVI TERMS OF SERVICE<br/>
             Early Testing Addendum</label>
             <div id="terms" onScroll={props.handleScroll}>

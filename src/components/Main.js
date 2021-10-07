@@ -26,36 +26,36 @@ class Main extends Component {
         });
     }
 
-    // Handle fields change for all the fields
-    handleChange = input => e => { //the e is a event parameter 
+    // Handle change for all states
+    handleChange = input => e => { // e represents event parameter 
         this.setState({ [input]: e.target.value });
     }
 
     showStep = () => {
         const {step} = this.state;
         switch (step) {
-            case 1:
+            case 1: // part 1: landing page
                 return (
                     <Landing
                         nextStep={this.nextStep}
                     />);
-            case 2:
+            case 2: // part 2: qualifying form
                 return (
                     <QualifyingForm
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                     />);
-            case 3:
+            case 3: // part 3: application form
                 return (
                     <ApplicationForm
                         handleChange={this.handleChange}
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                     />);
-            case 4:
+            case 4: // part 4: successful application confirmation page
                 return (
                     <Success />); 
-            default: return(<div></div>);
+            default: return(<></>);
         }
     }
 

@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 
 export class Landing extends Component {
-    //for 'Next' button
+    //onClick event for 'Next' button to move onto the next step of the application process
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -23,6 +23,7 @@ export class Landing extends Component {
 
                 <section id="main">
                     <div className="main-text">
+                        {/* editable text for landing page */}
                         <h1>
                             Did somebody say <br/>
                             <span>FREE</span> payroll?
@@ -39,7 +40,9 @@ export class Landing extends Component {
                         Help us make payroll for the new normal.
                         </h6>
                     </div>
+                    {/* button that takes you to qualifying form */}
                     <button className="start" onClick={this.continue}>
+                        {/* editable text for the button */}
                         Get Started
                     </button>
                 </section>
